@@ -1,56 +1,77 @@
 <html>
-<head>
-	<title>Javascript Demo</title>
-	<style>
-		body {
-			background-color:black;
-			font-family: monospace;
-			color:white;
-			font-size:50px;
-			text-align: center;
-			margin-top:20%;
-		}
-
-		#magic{
-			white-space: pre-wrap;
-			color: #777;
-			border-right: 1px solid #777;
-			padding-right: 7px;
-			display: inline;
-		}
-	</style>
-</head>
-<body>
-
-
-	<script>
-
-		(function(){
-			var words = ["fun.", "building.", "shaping the future.", "logic.", "opening minds.", "what I am learning at CodingDojo."],
-			el = document.getElementById('magic'),
-			word_counter = 0,
-			character_counter = 0;
-
-			function updateText()
-			{
-				el.innerHTML = el.innerHTML + words[word_counter][character_counter++];
-
-				if(character_counter == words[word_counter].length + 1)
-				{
-					word_counter++; 	//choose a different word
-					character_counter = 0;	//start over with the first character of the word
-					el.innerHTML = '';  //set the html to be blank
-
-					//if we're displaying the last word, go back to the first word
-					if(word_counter == words.length)
-						word_counter = 0;
-				}
+	<head>
+		<title>Javascript Demo</title>
+		<style>
+			*{
+				margin: 0 auto;
 			}
-			setInterval(updateText,300);
-		})();
+			body {
+				font-family: monospace;
+				font-size:50px;
+				text-align: center;
+			}
+			#header{
+				position: relative;
+				height: 50%;
+				color: white;
+				padding-top: 18%;
+				border-bottom: 3px solid #ededed;
+				background: url('3.jpg') no-repeat center center fixed;
+				box-shadow: inset 0px 0px 0 2000px rgba(0,0,0,0.7);
+				-webkit-background-size: cover;
+  				-moz-background-size: cover;
+ 				-o-background-size: cover;
+  				background-size: cover;
+			}
+			#magic{
+				white-space: pre-wrap;
+				color: #a0a0a0;
+				border-right: 1px solid #777;
+				padding-right: 7px;
+				display: inline;
+			}
+			#icons{
+				height: 200%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='header' class='overlay'>
+			Technology <span id="magic"></span>
+		</div>
+		<div id='icons'>
+			
+		</div>
+		<script>
+		
+			(function(){
+				var words = ["should be simple.", "should be engaging.", "should be liberating.", "should be sustainable.", "isn't what we do.", "is who we are.", "| CPQ+"],
+				el = document.getElementById('magic'),
+				word_counter = 0,
+				character_counter = 0;
 
-	</script>
+				function updateText()
+				{
+					el.innerHTML = el.innerHTML + words[word_counter][character_counter++];
 
-</body>
+					if(character_counter == words[word_counter].length + 1)
+					{
+						word_counter++; 	//choose a different word
+						character_counter = 0;	//start over with the first character of the word
+						el.innerHTML = '';  //set the html to be blank
 
+						//if we're displaying the last word, go back to the first word
+						if(word_counter == words.length)
+							word_counter = 0;
+					}
+					if(word_counter == words.length-1 && character_counter == words[words.length-1].length){
+						clearInterval(interval);
+					}
+				}
+				var interval = setInterval(updateText, 295);
+
+			})();
+
+		</script>
+	</body>
 </html>
